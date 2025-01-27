@@ -1,0 +1,295 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Query Page</title> -->
+    <!-- <link rel="stylesheet" href="./style.css"> -->
+
+     <!-- <header>
+
+        <nav>
+            <ul>
+                <li><a href="#home"  data-nav-link>Home</a></li>
+                <li><a href="#about-us" data-nav-link>About</a></li>
+                <li><a href="./package.html" data-nav-link>Packages</a></li>
+                <li><a href="./gallery.html">Gallery</a></li>
+                <li><a href="./query.html">Queries</a></li>
+            </ul>
+        </nav>
+    </header> -->
+
+    <!-- <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+
+        .query-container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 50%;
+        }
+
+        .query-container select,
+        .query-container button {
+            margin: 10px 0;
+            padding: 10px;
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .query-container button {
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            border: none;
+        }
+
+        .query-container button:hover {
+            background-color: #0056b3;
+        }
+
+        .result {
+            margin-top: 20px;
+            text-align: left;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f4f4f4;
+        }
+    </style>
+</head>
+<body>
+    <div class="query-container">
+        <h1>Query Page</h1>
+        <form id="query-form">
+            <label for="dropdown">Select an Option:</label>
+            <select name="dropdown" id="dropdown" required>
+                <option value="">-- Select --</option>
+                <option value="Option1">Most popular package </option>
+                <option value="Option2">Most budget friendly package</option>
+                <option value="Option3">Most women friendly package</option>
+                <option value="Option4">Top 3 Most Popular Packages Based on Ratings</option>
+                <option value="Option5">Packages Booked by Customers from USA</option>
+                <option value="Option6">Total Number of Bookings for each city
+                </option>
+                <option value="Option7">Customers from who have never booked a package </option>
+                <option value="Option8">All Customers Who Have Booked GOA GETAWAY</option>
+                <option value="Option9">All Customers Who Have Booked Rajasthan Royalty</option>
+                <option value="Option10">OAverage Rating for Each Package and Total Number of Ratings</option>
+            </select>
+            <button type="button" id="fetch-data">Fetch Data</button>
+        </form>
+        <div class="result" id="result">
+            <! Table data will be displayed here -->
+        <!-- </div> -->
+    <!-- </div>
+
+    <script>
+        document.getElementById('fetch-data').addEventListener('click', async () => {
+            const dropdown = document.getElementById('dropdown');
+            const resultDiv = document.getElementById('result');
+            const selectedOption = dropdown.value;
+
+            if (!selectedOption) {
+                alert('Please select an option.');
+                return;
+            }
+
+            try {
+                const response = await fetch('/get-tables', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ option: selectedOption })
+                });
+
+                if (!response.ok) {
+                    throw new Error('Failed to fetch data');
+                }
+
+                const data = await response.json();
+
+                if (data.tables && data.tables.length > 0) {
+                    const tableHTML = `<table>
+                        <thead>
+                            <tr>
+                                ${Object.keys(data.tables[0]).map(key => `<th>${key}</th>`).join('')}
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${data.tables.map(row => `
+                                <tr>
+                                    ${Object.values(row).map(value => `<td>${value}</td>`).join('')}
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>`;
+                    resultDiv.innerHTML = tableHTML;
+                } else {
+                    resultDiv.innerHTML = '<p>No data available for the selected option.</p>';
+                }
+
+            } catch (error) {
+                resultDiv.innerHTML = `<p>Error: ${error.message}</p>`;
+            }
+        });
+    </script>
+</body>
+</html> --> 
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Query Page</title>
+    <link rel="stylesheet" href="/static/pstyle.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 160px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        select, button {
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 16px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            padding: 10px;
+            border: 1.5px solid #141313;
+            text-align: left;
+        }
+        th {
+            background-color: #ffffff;
+            border: 1.6px solid #141313;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+
+        <nav>
+            <ul>
+                <li><a href="/"  data-nav-link>Home</a></li>
+                <li><a href="/#about-us" data-nav-link>About</a></li>
+                <li><a href="/packages" data-nav-link>Packages</a></li>
+                <li><a href="/gallery">Gallery</a></li>
+                <li><a href="/queries">Queries</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="query-container">
+        <h1>Queries</h1>
+        <form id="query-form">
+            <label for="dropdown">Select an Option:</label>
+            <select name="dropdown" id="dropdown" required>
+                <option value="">-- Select --</option>
+                <option value="Option1">Most popular package</option>
+                <option value="Option2">Most budget-friendly package</option>
+                <option value="Option3">Most women-friendly package</option>
+                <option value="Option4">Top 3 Most Popular Packages Based on Ratings</option>
+                <option value="Option5">Packages Booked by Customers from USA</option>
+                <option value="Option6">Total Number of Bookings for Each City</option>
+                <option value="Option7">Customers Who Have Never Booked a Package</option>
+                <option value="Option8">All Customers Who Have Booked GOA GETAWAY</option>
+                <option value="Option9">All Customers Who Have Booked Rajasthan Royalty</option>
+                <option value="Option10">Average Rating for Each Package</option>
+            </select>
+            <button type="button" id="fetch-data">Fetch Data</button>
+        </form>
+        <div class="result" id="result">
+            Table data will be displayed here
+         </div>
+    </div>
+
+    <script>
+        document.getElementById('fetch-data').addEventListener('click', async () => {
+            const query = document.getElementById('dropdown').value;
+            const resultsDiv = document.getElementById('result');
+
+            if (!query) {
+                alert('Please select a query.');
+                return;
+            }
+
+            try {
+                const response = await fetch('/execute_query', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ query }),
+                });
+
+                if (!response.ok) {
+                    throw new Error('Failed to fetch data');
+                }
+
+                const data = await response.json();
+                if (data.success) {
+                    let tableHTML = '<table><thead><tr>';
+                    tableHTML += Object.keys(data.results[0])
+                        .map(key => `<th>${key}</th>`)
+                        .join('');
+                    tableHTML += '</tr></thead><tbody>';
+                    tableHTML += data.results
+                        .map(row => {
+                            return (
+                                '<tr>' +
+                                Object.values(row)
+                                    .map(value => `<td>${value}</td>`)
+                                    .join('') +
+                                '</tr>'
+                            );
+                        })
+                        .join('');
+                    tableHTML += '</tbody></table>';
+                    resultsDiv.innerHTML = tableHTML;
+                } else {
+                    resultsDiv.innerHTML = `<p>${data.message}</p>`;
+                }
+            } catch (error) {
+                resultsDiv.innerHTML = `<p>Error: ${error.message}</p>`;
+            }
+        });
+    </script>
+</body>
+</html>
