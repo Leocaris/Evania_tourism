@@ -1,2 +1,3 @@
 # Evania_tourism
 In the rapidly evolving digital age, tourism has been greatly impacted by advancements in technology. This project, titled "Evania," aims to create a comprehensive online platform to assist tourists in planning their trips efficiently. The website's frontend is developed using HTML, CSS, and JavaScript, ensuring a user-friendly and visually appealing interface. The backend is powered by Flask, a micro web framework in Python, which communicates with a MySQL database to store and retrieve relevant data.
+![Screenshot 2025-01-22 192751](https://github.com/user-attachments/assets/d3c2a481-2b1c-4f8f-a46d-082ead680f52)
